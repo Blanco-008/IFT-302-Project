@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       Online Student Portfolio Website
+       IFT 302 - Group 1
+       Pure HTML + CSS + JavaScript (no build step, no server needed)
+       ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Online student portfolio website of the IFT 302 Group 1 team." />
+  <title>Alex Johnson | IFT 302 Student Portfolio</title>
+
+  <!-- Stylesheet location:
+       Save the CSS file as "style.css" and place it inside a folder
+       named "css" next to this index.html file. -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       Edit the links below to point to your page sections.
+       ============================================================ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <!-- Logo: change the text inside <em> if you want a different logo -->
+      <a href="#home" class="nav-logo">IFT<em>302</em></a>
+
+      <!-- Hamburger button: shown on mobile only (controlled by js/script.js) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigation menu links -->
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO / INTRO ==================== -->
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <span class="hero-badge reveal">IFT 302 &bull; Group 1</span>
+        <h1 class="hero-title reveal" style="--reveal-delay: 0.1s;">Alex Johnson</h1>
+        <p class="hero-role reveal" style="--reveal-delay: 0.2s;">Computer Science Student</p>
+        <p class="hero-text reveal" style="--reveal-delay: 0.3s;">
+          Hi! I'm Alex Johnson, a Computer Science student with a passion for building
+          web applications and turning classroom theory into real projects. Welcome to my
+          online student portfolio &mdash; a collection of everything I have learned and
+          built during my time at IFT 302 (Group 1).
+        </p>
+        <div class="hero-buttons reveal" style="--reveal-delay: 0.4s;">
+          <a href="#projects" class="btn btn-light">View My Work</a>
+          <a href="#contact" class="btn btn-outline-light">Get In Touch</a>
+        </div>
+        <div class="hero-social reveal" style="--reveal-delay: 0.5s;">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:alex.johnson@example.com">Email Me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="section about" id="about">
+      <div class="container">
+        <h2 class="section-title reveal">About <span>Me</span></h2>
+        <p class="section-subtitle reveal">
+          Get to know me a little better &mdash; who I am, what I study, and what drives me.
+        </p>
+
+        <div class="about-grid">
+          <!-- Profile photo placeholder: replace the initials with your own photo -->
+          <div class="about-photo reveal">
+            <span class="about-initials">AJ</span>
+          </div>
+
+          <div class="about-info reveal" style="--reveal-delay: 0.15s;">
+            <h3>Who I Am</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. I am a Computer Science
+              student at IFT, currently in my second year of study, with a strong interest in
+              software development, web technologies and data-driven applications.
+            </p>
+            <p>
+              Outside of lectures, I enjoy working on personal projects, contributing to
+              open-source style learning exercises and collaborating with my IFT 302 Group 1
+              teammates. This portfolio showcases the projects I have completed so far.
+            </p>
+
+            <!-- Edit these bullet points to reflect your own highlights -->
+            <ul class="about-points">
+              <li>Computer Science student at IFT with a focus on software engineering.</li>
+              <li>Building web applications using modern JavaScript frameworks.</li>
+              <li>Active team member of IFT 302 Group 1 &mdash; learning together, building together.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Statistics: edit the numbers / labels to match your real achievements -->
+        <div class="stats-grid">
+          <div class="stat-card reveal">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+          <div class="stat-card reveal" style="--reveal-delay: 0.1s;">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Technologies Learned</span>
+          </div>
+          <div class="stat-card reveal" style="--reveal-delay: 0.2s;">
+            <span class="stat-number">2+</span>
+            <span class="stat-label">Years of Study</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS ==================== -->
+    <section class="section section-alt skills" id="skills">
+      <div class="container">
+        <h2 class="section-title reveal">My <span>Skills</span></h2>
+        <p class="section-subtitle reveal">
+          A snapshot of the programming languages, frameworks and tools I have been working with.
+        </p>
+
+        <div class="skills-grid">
+          <!-- Skill category cards: edit the skills inside each card -->
+          <div class="skill-card reveal">
+            <h3>Languages &amp; Programming</h3>
+            <div class="skill">
+              <div class="skill-header"><span>JavaScript</span><span>90%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 90%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>Python</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 85%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>Java</span><span>75%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 75%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>C++</span><span>70%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 70%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>SQL</span><span>80%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 80%;"></div></div>
+            </div>
+          </div>
+
+          <div class="skill-card reveal" style="--reveal-delay: 0.1s;">
+            <h3>Frameworks &amp; Libraries</h3>
+            <div class="skill">
+              <div class="skill-header"><span>React</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 85%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>Node.js</span><span>80%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 80%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>Express</span><span>75%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 75%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>Django</span><span>70%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 70%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>Bootstrap</span><span>82%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 82%;"></div></div>
+            </div>
+          </div>
+
+          <div class="skill-card reveal" style="--reveal-delay: 0.2s;">
+            <h3>Tools &amp; Platforms</h3>
+            <div class="skill">
+              <div class="skill-header"><span>Git / GitHub</span><span>88%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 88%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>VS Code</span><span>90%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 90%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>Docker</span><span>65%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 65%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>Postman</span><span>78%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 78%;"></div></div>
+            </div>
+            <div class="skill">
+              <div class="skill-header"><span>MySQL</span><span>72%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="--level: 72%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section class="section projects" id="projects">
+      <div class="container">
+        <h2 class="section-title reveal">My <span>Projects</span></h2>
+        <p class="section-subtitle reveal">
+          A selection of projects I have built during my studies and personal time.
+        </p>
+
+        <div class="projects-grid">
+          <!-- Project cards: add/remove cards here to update your portfolio -->
+
+          <article class="project-card reveal">
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Express</span>
+              <span class="tech-tag">MongoDB</span>
+            </div>
+            <h3>Campus Event Hub</h3>
+            <p>
+              A web platform that helps IFT students discover, RSVP for and manage campus
+              events in one place, including an admin dashboard for event organisers.
+            </p>
+            <div class="project-links">
+              <a href="#" class="btn btn-small btn-outline">Live Demo</a>
+              <a href="#" class="btn btn-small btn-outline">Source Code</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" style="--reveal-delay: 0.1s;">
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <h3>StudyVault</h3>
+            <p>
+              A flashcard-based study app that lets students create, share and test their own
+              study decks with spaced-repetition style quizzes.
+            </p>
+            <div class="project-links">
+              <a href="#" class="btn btn-small btn-outline">Live Demo</a>
+              <a href="#" class="btn btn-small btn-outline">Source Code</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" style="--reveal-delay: 0.2s;">
+            <div class="project-tech">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">CSS</span>
+            </div>
+            <h3>TaskFlow</h3>
+            <p>
+              A simple productivity app for creating tasks, setting priorities and tracking
+              progress towards personal goals.
+            </p>
+            <div class="project-links">
+              <a href="#" class="btn btn-small btn-outline">Live Demo</a>
+              <a href="#" class="btn btn-small btn-outline">Source Code</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="section section-alt contact" id="contact">
+      <div class="container">
+        <h2 class="section-title reveal">Get In <span>Contact</span></h2>
+        <p class="section-subtitle reveal">
+          Have a question, a collaboration idea, or just want to say hello? Send me a message!
+        </p>
+
+        <div class="contact-grid">
+          <!-- Contact information: edit the details below -->
+          <div class="contact-info reveal">
+            <h3>Let&rsquo;s Work Together</h3>
+            <p>
+              I would love to hear from you. Whether it is about a project, an opportunity or
+              just feedback on my work, drop me a line.
+            </p>
+            <ul class="contact-details">
+              <li>
+                <span class="contact-icon">
+                  <!-- Email icon -->
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </span>
+                <div>
+                  <strong>Email</strong>
+                  <a href="mailto:alex.johnson@example.com">alex.johnson@example.com</a>
+                </div>
+              </li>
+              <li>
+                <span class="contact-icon">
+                  <!-- Phone icon -->
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <div>
+                  <strong>Phone</strong>
+                  <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                </div>
+              </li>
+              <li>
+                <span class="contact-icon">
+                  <!-- Location pin icon -->
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 4.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                </span>
+                <div>
+                  <strong>Location</strong>
+                  <span>San Francisco, CA</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact form: validation handled in js/script.js -->
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g. Alex Johnson" required />
+                <span class="error-message" id="nameError"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                <span class="error-message" id="emailError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="What is this about?" maxlength="100" />
+              <span class="error-message" id="subjectError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+              <span class="error-message" id="messageError"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo footer-logo">IFT<em>302</em></a>
+        <p>
+          Online student portfolio of the IFT 302 Group 1 team. Built with HTML, CSS and
+          JavaScript.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:alex.johnson@example.com">alex.johnson@example.com</a></li>
+          <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+          <li><span>San Francisco, CA</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year">2026</span> Alex Johnson &bull; IFT 302 Group 1. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript: navigation, animations, validation (no libraries needed) -->
+  <script src="js/script.js"></script>
+</body>
+</html>
