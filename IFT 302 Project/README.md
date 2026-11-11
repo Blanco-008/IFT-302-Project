@@ -4,7 +4,7 @@ A responsive, shared student portfolio website for **IFT 302 Group 1** at **Nile
 
 Built with **pure HTML, CSS, and JavaScript** — no PHP, no database, no backend, no build step.
 
-## 📁 Files
+## Files
 
 ```
 IFT 302 Project/
@@ -17,7 +17,7 @@ IFT 302 Project/
 └── data.js       # Group member profiles
 ```
 
-## 🚀 How to Run
+## How to Run
 
 1. Open `index.html` directly in any browser — no server needed.
 2. Use the navigation links to visit Home, Members, Edit Profile, and Contact.
@@ -32,7 +32,7 @@ IFT 302 Project/
    - Copy the 4 files into `/Applications/MAMP/htdocs/portfolio/`
    - Visit: `http://localhost:8888/portfolio/`
 
-## ✏️ How to Edit
+## How to Edit
 
 ### Edit a member via the website
 1. Open the site → **Edit Profile**.
@@ -48,13 +48,13 @@ IFT 302 Project/
 - Change the fields inside a member object (`name`, `role`, `year`, `photo`, `bio`, `skills[]`, `projects[]`, `email`, `github`).
 - Save → refresh the page.
 
-## ✉️ Contact Page
+## Contact Page
 
 - Fields: Full Name, Email, Message.
 - JavaScript validation: name ≥ 2 chars, valid email, message ≥ 10 chars.
 - The form validates the fields in the browser; it does not send email.
 
-## 🎨 Design
+## Design
 
 - Plain white background, simple typography, and basic borders.
 - Responsive navigation, profile directory, and forms for mobile screens.
