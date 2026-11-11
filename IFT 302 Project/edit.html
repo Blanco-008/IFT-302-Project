@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+       IFT 302 GROUP 1 — Edit / Update Profile Page
+       Nile University of Nigeria
+       
+       Form to preview / update a member, or add a new member.
+       Handlers live in script.js.
+       -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Edit / update IFT 302 Group 1 member profiles." />
+  <title>IFT 302 Group 1 | Edit Profile</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- NAVIGATION -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <img src="nile-logo.png" alt="Nile University logo" class="logo" />
+        <span class="brand-name">Nile University</span>
+      </a>
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="members.html">All Members</a></li>
+          <li><a href="edit.html" aria-current="page">Edit Profile</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- EDIT / UPDATE SECTION -->
+    <section class="section section-alt" id="edit">
+      <div class="container">
+        <h2 class="section-title">Edit / <span>Update</span> Profile</h2>
+        <p class="section-sub">
+          Use this form to preview and update a member in this browser session. Copy the
+          JSON shown after saving into <code>data.js</code> to keep the changes.
+        </p>
+
+        <div class="edit-panel">
+          <div class="edit-grid">
+            <div class="form-group full">
+              <label for="memberSelect">Select Member</label>
+              <select id="memberSelect">
+                <!-- Options populated by script.js -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="memberName">Full Name</label>
+              <input type="text" id="memberName" placeholder="e.g. Alex Johnson" />
+            </div>
+            <div class="form-group">
+              <label for="memberRole">Role / Course</label>
+              <input type="text" id="memberRole" placeholder="e.g. Computer Science Student" />
+            </div>
+            <div class="form-group">
+              <label for="memberYear">Year / Level</label>
+              <input type="text" id="memberYear" placeholder="e.g. 300 Level" />
+            </div>
+            <div class="form-group full">
+              <label for="memberBio">Bio</label>
+              <textarea id="memberBio" placeholder="Short introduction..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="memberSkills">Skills (comma separated)</label>
+              <input type="text" id="memberSkills" placeholder="e.g. JavaScript, React, Node.js" />
+            </div>
+            <div class="form-group">
+              <label for="memberGithub">GitHub URL</label>
+              <input type="text" id="memberGithub" placeholder="https://github.com/username" />
+            </div>
+            <div class="form-group full">
+              <label for="memberProjects">Projects (one per line — "Title — Description")</label>
+              <textarea id="memberProjects" placeholder="Project Title — Project Description"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="memberEmail">Email</label>
+              <input type="email" id="memberEmail" placeholder="name@example.com" />
+            </div>
+          </div>
+
+          <div class="edit-actions">
+            <button type="button" class="btn btn-primary" id="btnPreview">Preview Changes</button>
+            <button type="button" class="btn btn-outline" id="btnSave">Save Changes</button>
+            <button type="button" class="btn btn-outline" id="btnAddMember">Add New Member</button>
+          </div>
+
+          <!-- Live preview of the member card -->
+          <div class="edit-preview" id="editPreview">
+            <h3>Live Preview</h3>
+            <div id="editPreviewCard"></div>
+            <pre id="editSavedCode"><!-- Updated member JSON will appear here after "Save Changes" --></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>IFT 302 / Group 1</h3>
+        <p>Online student portfolio of IFT 302 Group 1 at Nile University of Nigeria. Built with pure HTML, CSS and JavaScript.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="members.html">All Members</a></li>
+          <li><a href="edit.html">Edit Profile</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>GitHub</h4>
+        <ul>
+          <li><a href="https://github.com/Blanco-008/IFT-302-Project" target="_blank" rel="noopener">Group GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year">2026</span> IFT 302 Group 1 — Nile University of Nigeria. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

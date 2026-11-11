@@ -1,56 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ============================================================
-       IFT 302 GROUP 1 — Student Portfolio
+  <!--
+       IFT 302 GROUP 1 — Home Page
        Nile University of Nigeria
-       ------------------------------------------------------------
-       This is the SHARED group portfolio.
-
-       STRUCTURE:
-       - index.html  : the page layout (all sections)
-       - data.js      : ALL student profiles live here (array of objects)
-       - script.js    : renders profiles, handles edit form + contact form
-       - styles.css   : all styling
-
-       TO RUN: just open index.html in any browser. No server needed.
-       ============================================================ -->
+       
+       This is the HOME page of the shared student portfolio.
+       Other pages live alongside it:
+         - members.html   : member directory
+         - edit.html      : edit / update profile
+         - contact.html   : contact form
+       Shared assets: styles.css, script.js, data.js
+      -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="IFT 302 Group 1 student portfolio — Nile University of Nigeria." />
-  <title>IFT 302 Group 1 | Student Portfolio</title>
+  <title>IFT 302 Group 1 | Home</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Skip link for keyboard users -->
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ==================== NAVIGATION ==================== -->
+  <!-- NAVIGATION -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-container">
-      <a href="#home" class="brand">IFT <span>302</span> / Group 1</a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
+      <a href="index.html" class="brand">
+        <img src="nile-logo.png" alt="Nile University logo" class="logo" />
+        <span class="brand-name">Nile University</span>
+      </a>
       <nav class="nav-menu" id="navMenu">
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#members">All Members</a></li>
-          <li><a href="#edit">Edit Profile</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="members.html">All Members</a></li>
+          <li><a href="edit.html">Edit Profile</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-
-    <!-- ==================== HERO ==================== -->
+    <!-- HERO -->
     <section class="hero" id="home">
       <div class="container hero-content">
         <span class="hero-badge">Nile University of Nigeria</span>
@@ -58,154 +49,18 @@
         <p class="hero-lead">Student Portfolio</p>
         <p class="hero-text">
           Welcome to the official online student portfolio of IFT 302 Group 1 at Nile
-          University of Nigeria. Explore the member profiles below, check out the projects
+          University of Nigeria. Explore the member profiles on the members page, check out the projects
           our group has built, and get in touch.
         </p>
         <div class="hero-actions">
-          <a href="#members" class="btn btn-primary">Meet Our Members</a>
-          <a href="#contact" class="btn btn-outline">Contact Us</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== MEMBERS DIRECTORY ==================== -->
-    <section class="section" id="members">
-      <div class="container">
-        <h2 class="section-title">Meet the <span>Members</span></h2>
-        <p class="section-sub">
-          A directory of every student in IFT 302 Group 1. Cards are generated automatically
-          from the <code>groupMembers</code> array in <code>data.js</code>.
-        </p>
-
-        <!-- Cards are injected here dynamically by js/script.js -->
-        <div class="members-grid" id="membersGrid"></div>
-      </div>
-    </section>
-
-    <!-- ==================== EDIT / UPDATE SECTION ==================== -->
-    <section class="section section-alt" id="edit">
-      <div class="container">
-        <h2 class="section-title">Edit / <span>Update</span> Profile</h2>
-        <p class="section-sub">
-          Use this form to preview and update any group member's profile. Changes are applied
-          to the live preview instantly; saving writes the updated data back into <code>data.js</code>.
-        </p>
-
-        <div class="edit-panel">
-          <div class="edit-grid">
-            <div class="form-group full">
-              <label for="memberSelect">Select Member</label>
-              <select id="memberSelect">
-                <!-- Options populated by js/script.js -->
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="memberName">Full Name</label>
-              <input type="text" id="memberName" placeholder="e.g. Alex Johnson" />
-            </div>
-            <div class="form-group">
-              <label for="memberRole">Role / Course</label>
-              <input type="text" id="memberRole" placeholder="e.g. Computer Science Student" />
-            </div>
-            <div class="form-group">
-              <label for="memberYear">Year / Level</label>
-              <input type="text" id="memberYear" placeholder="e.g. 300 Level" />
-            </div>
-            <div class="form-group full">
-              <label for="memberBio">Bio</label>
-              <textarea id="memberBio" placeholder="Short introduction..."></textarea>
-            </div>
-            <div class="form-group">
-              <label for="memberSkills">Skills (comma separated)</label>
-              <input type="text" id="memberSkills" placeholder="e.g. JavaScript, React, Node.js" />
-            </div>
-            <div class="form-group">
-              <label for="memberGithub">GitHub URL</label>
-              <input type="text" id="memberGithub" placeholder="https://github.com/username" />
-            </div>
-            <div class="form-group full">
-              <label for="memberProjects">Projects (one per line — "Title — Description")</label>
-              <textarea id="memberProjects" placeholder={"Project Title — Project Description\nAnother Project — Another Description"}></textarea>
-            </div>
-            <div class="form-group">
-              <label for="memberEmail">Email</label>
-              <input type="email" id="memberEmail" placeholder="name@example.com" />
-            </div>
-          </div>
-
-          <div class="edit-actions">
-            <button type="button" class="btn btn-primary" id="btnPreview">Preview Changes</button>
-            <button type="button" class="btn btn-outline" id="btnSave">Save Changes</button>
-            <button type="button" class="btn btn-outline" id="btnAddMember">Add New Member</button>
-          </div>
-
-          <!-- Live preview of the member card -->
-          <div class="edit-preview" id="editPreview">
-            <h3>Live Preview</h3>
-            <div id="editPreviewCard"></div>
-            <pre id="editSavedCode"><!-- Updated member JSON will appear here after "Save Changes" --></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CONTACT ==================== -->
-    <section class="section" id="contact">
-      <div class="container">
-        <h2 class="section-title">Get in <span>Contact</span></h2>
-        <p class="section-sub">Have a question, collaboration idea, or just want to say hello?</p>
-
-        <div class="contact-grid">
-          <div class="contact-info">
-            <h3>Group 1 — Nile University of Nigeria</h3>
-            <p>Welcome to reach out. Whether it is about a project, an opportunity, or feedback on our work.</p>
-            <ul class="contact-details">
-              <li>
-                <span class="contact-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                </span>
-                <div><strong>Email</strong><a href="mailto:group1@nileuniversity.edu">group1@nileuniversity.edu</a></div>
-              </li>
-              <li>
-                <span class="contact-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </span>
-                <div><strong>Group Email</strong><a href="mailto:group1@nileuniversity.edu">group1@nileuniversity.edu</a></div>
-              </li>
-              <li>
-                <span class="contact-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 4.5a2.5 2.5 0 0 1 0 5z"/></svg>
-                </span>
-                <div><strong>Location</strong><span>Nile University of Nigeria</span></div>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Contact form: validation + dynamic success message in js/script.js -->
-          <form class="contact-form" id="contactForm" novalidate>
-            <div class="form-group">
-              <label for="cName">Full Name</label>
-              <input type="text" id="cName" name="name" placeholder="Your full name" required />
-              <span class="error-message" id="cNameError"></span>
-            </div>
-            <div class="form-group">
-              <label for="cEmail">Email Address</label>
-              <input type="email" id="cEmail" name="email" placeholder="you@example.com" required />
-              <span class="error-message" id="cEmailError"></span>
-            </div>
-            <div class="form-group">
-              <label for="cMessage">Message</label>
-              <textarea id="cMessage" name="message" rows="6" placeholder="Write your message..." required></textarea>
-              <span class="error-message" id="cMessageError"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-          </form>
+          <a href="members.html" class="btn btn-primary">Meet Our Members</a>
+          <a href="contact.html" class="btn btn-outline">Contact Us</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
@@ -215,16 +70,16 @@
       <div>
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#members">All Members</a></li>
-          <li><a href="#edit">Edit Profile</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="members.html">All Members</a></li>
+          <li><a href="edit.html">Edit Profile</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div>
         <h4>GitHub</h4>
         <ul>
-          <li><a href="https://github.com/" target="_blank" rel="noopener">Group GitHub</a></li>
+          <li><a href="https://github.com/Blanco-008/IFT-302-Project" target="_blank" rel="noopener">Group GitHub</a></li>
         </ul>
       </div>
     </div>
@@ -235,7 +90,6 @@
     </div>
   </footer>
 
-  <!-- data.js holds all member data; script.js renders + handles behaviour -->
   <script src="data.js"></script>
   <script src="script.js"></script>
 </body>

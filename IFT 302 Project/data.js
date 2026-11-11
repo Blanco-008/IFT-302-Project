@@ -1,10 +1,8 @@
-/* ============================================================
-   DATA.JS — IFT 302 Group 1 (Nile University of Nigeria)
-   ------------------------------------------------------------
-   THIS IS THE HEART OF THE WEBSITE.
+/*
+   DATA.JS — THIS IS THE HEART OF THE WEBSITE.
 
    All student profiles live in this simple array of objects.
-   The homepage (index.html) loads this array and builds every
+   The homepage (edit.html) loads this array and builds every
    member card automatically — no HTML editing needed to add
    or remove a member.
 
@@ -51,21 +49,6 @@ const groupMembers = [
   },
   {
     id: 2,
-    name: "Sarah Chen",
-    role: "Computer Science Student",
-    year: "300 Level",
-    photo: "SC",
-    bio: "CS student at Nile University focused on backend development, databases and building reliable software.",
-    skills: ["Python", "Django", "SQL", "JavaScript"],
-    projects: [
-      { title: "StudyBuddy API", description: "REST API for a study-group matching platform." },
-      { title: "Campus Data Dashboard", description: "Dashboard visualising student activity and resource usage." }
-    ],
-    email: "sarah.chen@example.com",
-    github: "https://github.com/sarahchen-dev"
-  },
-  {
-    id: 3,
     name: "David Okafor",
     role: "Computer Science Student",
     year: "300 Level",
@@ -80,7 +63,7 @@ const groupMembers = [
     github: "https://github.com/davidokafor-dev"
   },
   {
-    id: 4,
+    id: 3,
     name: "Fatima Rahman",
     role: "Computer Science Student",
     year: "200 Level",
@@ -95,7 +78,7 @@ const groupMembers = [
     github: "https://github.com/fatimarahman-dev"
   },
   {
-    id: 5,
+    id: 4,
     name: "Michael Adeyemi",
     role: "Computer Science Student",
     year: "300 Level",
@@ -110,7 +93,7 @@ const groupMembers = [
     github: "https://github.com/michaeladeyemi-dev"
   },
   {
-    id: 6,
+    id: 5,
     name: "Grace Nwosu",
     role: "Computer Science Student",
     year: "300 Level",
@@ -125,7 +108,7 @@ const groupMembers = [
     github: "https://github.com/gracenwosu-dev"
   },
   {
-    id: 7,
+    id: 6,
     name: "Daniel Eze",
     role: "Computer Science Student",
     year: "300 Level",
@@ -140,7 +123,7 @@ const groupMembers = [
     github: "https://github.com/danieleze-dev"
   },
   {
-    id: 8,
+    id: 7,
     name: "Hannah Bello",
     role: "Computer Science Student",
     year: "300 Level",
@@ -155,7 +138,7 @@ const groupMembers = [
     github: "https://github.com/hannahbello-dev"
   },
   {
-    id: 9,
+    id: 8,
     name: "Samuel Osei",
     role: "Computer Science Student",
     year: "300 Level",

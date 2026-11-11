@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+       IFT 302 GROUP 1 — Contact Page
+       Nile University of Nigeria
+       ------------------------------------------------------------
+       Contact form with JavaScript validation + dynamic success
+       message. Handled by script.js.
+       -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact IFT 302 Group 1 — Nile University of Nigeria student portfolio." />
+  <title>IFT 302 Group 1 | Contact</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- NAVIGATION -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <img src="nile-logo.png" alt="Nile University logo" class="logo" />
+        <span class="brand-name">Nile University</span>
+      </a>
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="members.html">All Members</a></li>
+          <li><a href="edit.html">Edit Profile</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="section-title">Get in <span>Contact</span></h2>
+        <p class="section-sub">Have a question, collaboration idea, or just want to say hello?</p>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Group 1 — Nile University of Nigeria</h3>
+            <p>Welcome to reach out. Whether it is about a project, an opportunity, or feedback on our work.</p>
+            <ul class="contact-details">
+              <li>
+                <div><strong>Email</strong><a href="mailto:group1@nileuniversity.edu">group1@nileuniversity.edu</a></div>
+              </li>
+              <li>
+                <div><strong>Location</strong><span>Nile University of Nigeria</span></div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact form: validation + dynamic success message in script.js -->
+          <form class="contact-form" id="contactForm" novalidate>
+            <p>This demonstration form validates your details but does not send email.</p>
+            <div class="form-group">
+              <label for="cName">Full Name</label>
+              <input type="text" id="cName" name="name" placeholder="Your full name" required />
+              <span class="error-message" id="cNameError"></span>
+            </div>
+            <div class="form-group">
+              <label for="cEmail">Email Address</label>
+              <input type="email" id="cEmail" name="email" placeholder="you@example.com" required />
+              <span class="error-message" id="cEmailError"></span>
+            </div>
+            <div class="form-group">
+              <label for="cMessage">Message</label>
+              <textarea id="cMessage" name="message" rows="6" placeholder="Write your message..." required></textarea>
+              <span class="error-message" id="cMessageError"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Check Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>IFT 302 / Group 1</h3>
+        <p>Online student portfolio of IFT 302 Group 1 at Nile University of Nigeria. Built with pure HTML, CSS and JavaScript.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="members.html">All Members</a></li>
+          <li><a href="edit.html">Edit Profile</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>GitHub</h4>
+        <ul>
+          <li><a href="https://github.com/Blanco-008/IFT-302-Project" target="_blank" rel="noopener">Group GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year">2026</span> IFT 302 Group 1 — Nile University of Nigeria. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

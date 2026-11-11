@@ -1,284 +1,243 @@
-/* ============================================================
-   SCRIPT.JS — IFT 302 Group 1 (Nile University of Nigeria)
-   ------------------------------------------------------------
-   Responsibilities:
-   1. Render the member directory from the `groupMembers` array
-      that lives in data.js.
-   2. Handle the mobile navigation menu.
-   3. Handle the Edit/Update profile form (preview + save).
-   4. Handle the Contact form (validation + dynamic success message).
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
 
-   NOTE: This file expects `data.js` to be loaded first because it
-   reads the global `groupMembers` array.
-   ============================================================ */
-
-/* ---------- Mobile navigation toggle ---------- */
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
-
-function setNavOpen(open) {
-  navMenu.classList.toggle("open", open);
-  menuToggle.classList.toggle("open", open);
-  menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
-}
-
-menuToggle.addEventListener("click", function () {
-  setNavOpen(!navMenu.classList.contains("open"));
-});
-
-navMenu.querySelectorAll("a").forEach(function (link) {
-  link.addEventListener("click", function () {
-    setNavOpen(false);
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener("click", function () {
+    const isOpen = navMenu.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
-});
-
-/* ---------- Header background on scroll ---------- */
-const siteHeader = document.getElementById("siteHeader");
-window.addEventListener("scroll", function () {
-  siteHeader.classList.toggle("scrolled", window.scrollY > 10);
-}, { passive: true });
-
-/* ============================================================
-   MEMBER DIRECTORY — render cards from data.js
-   ============================================================ */
-function renderMembers() {
-  const grid = document.getElementById("membersGrid");
-  grid.innerHTML = "";
-
-  groupMembers.forEach(function (member, index) {
-    const card = document.createElement("article");
-    card.className = "member-card";
-
-    card.innerHTML = `
-      <div class="member-photo"><span>${member.photo}</span></div>
-      <div class="member-body">
-        <h3>${member.name}</h3>
-        <p class="member-role">${member.role}</p>
-        <p class="member-year">${member.year}</p>
-        <p class="member-bio">${member.bio}</p>
-        <div class="member-skills">
-          ${member.skills.map(function (s) { return `<span class="tech-tag">${s}</span>`; }).join("")}
-        </div>
-        <div class="member-projects">
-          ${member.projects.map(function (p) {
-            return `<div class="member-project"><h4>${p.title}</h4><p>${p.description}</p></div>`;
-          }).join("")}
-        </div>
-        <div class="member-contact">
-          <a href="mailto:${member.email}">Email</a>
-          <a href="${member.github}" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-    `;
-
-    grid.appendChild(card);
-  });
-
-  // Populate the "Select Member" dropdown in the edit form
-  const select = document.getElementById("memberSelect");
-  select.innerHTML = "";
-  groupMembers.forEach(function (member, index) {
-    const opt = document.createElement("option");
-    opt.value = index;
-    opt.textContent = member.name;
-    select.appendChild(opt);
+  navMenu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      navMenu.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
   });
 }
 
-/* Call once on page load so the directory is populated */
-renderMembers();
-
-/* ============================================================
-   EDIT / UPDATE PROFILE — preview + save
-   ============================================================ */
-const memberSelect = document.getElementById("memberSelect");
-const memberForm = {
-  name: document.getElementById("memberName"),
-  role: document.getElementById("memberRole"),
-  year: document.getElementById("memberYear"),
-  bio: document.getElementById("memberBio"),
-  skills: document.getElementById("memberSkills"),
-  projects: document.getElementById("memberProjects"),
-  email: document.getElementById("memberEmail"),
-  github: document.getElementById("memberGithub")
-};
-const editPreviewCard = document.getElementById("editPreviewCard");
-const editSavedCode = document.getElementById("editSavedCode");
-
-function getSelectedIndex() {
-  return Number(memberSelect.value);
+function appendText(parent, tag, text, className) {
+  const element = document.createElement(tag);
+  element.textContent = text;
+  if (className) element.className = className;
+  parent.appendChild(element);
+  return element;
 }
 
-function populateEditForm() {
-  const member = groupMembers[getSelectedIndex()];
-  if (!member) return;
-  memberForm.name.value = member.name;
-  memberForm.role.value = member.role;
-  memberForm.year.value = member.year || "";
-  memberForm.bio.value = member.bio;
-  memberForm.skills.value = member.skills.join(", ");
-  memberForm.projects.value = member.projects.map(function (p) { return `${p.title} — ${p.description}`; }).join("\n");
-  memberForm.email.value = member.email;
-  memberForm.github.value = member.github;
-}
+function createMemberCard(member) {
+  const card = document.createElement("article");
+  card.className = "member-card";
+  appendText(card, "h3", member.name);
+  appendText(card, "p", [member.role, member.year].filter(Boolean).join(" · "), "member-meta");
+  appendText(card, "p", member.bio, "member-bio");
 
-function buildMemberFromForm() {
-  const rawProjects = memberForm.projects.value.split("\n").map(function (l) { return l.trim(); }).filter(Boolean);
-  const projects = rawProjects.map(function (line) {
-    const idx = line.indexOf("—");
-    const title = idx === -1 ? line : line.slice(0, idx);
-    const description = idx === -1 ? "" : line.slice(idx + 1).trim();
-    return { title: title.trim(), description: description };
-  }).filter(function (p) { return p.title.length > 0; });
-
-  return {
-    id: getSelectedIndex() + 1,
-    name: memberForm.name.value.trim(),
-    role: memberForm.role.value.trim(),
-    year: memberForm.year.value.trim() || "300 Level",
-    photo: memberForm.name.value.trim().split(" ").map(function (w) { return w[0]; }).join("").slice(0, 2).toUpperCase(),
-    bio: memberForm.bio.value.trim(),
-    skills: memberForm.skills.value.split(",").map(function (s) { return s.trim(); }).filter(Boolean),
-    projects: projects,
-    email: memberForm.email.value.trim(),
-    github: memberForm.github.value.trim()
-  };
-}
-
-function previewMember() {
-  const member = buildMemberFromForm();
-  editPreviewCard.innerHTML = `
-    <div class="member-photo"><span>${member.photo}</span></div>
-    <div class="member-body">
-      <h3>${member.name}</h3>
-      <p class="member-role">${member.role}</p>
-      <p class="member-year">${member.year}</p>
-      <p class="member-bio">${member.bio}</p>
-      <div class="member-skills">
-        ${member.skills.map(function (s) { return `<span class="tech-tag">${s}</span>`; }).join("")}
-      </div>
-      <div class="member-projects">
-        ${member.projects.map(function (p) {
-          return `<div class="member-project"><h4>${p.title}</h4><p>${p.description}</p></div>`;
-        }).join("")}
-      </div>
-      <div class="member-contact">
-        <a href="mailto:${member.email}">Email</a>
-        <a href="${member.github}" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </div>
-  `;
-}
-
-document.getElementById("btnPreview").addEventListener("click", function () {
-  previewMember();
-});
-
-document.getElementById("btnSave").addEventListener("click", function () {
-  const member = buildMemberFromForm();
-  groupMembers[getSelectedIndex()] = member;
-  renderMembers();
-  editSavedCode.textContent = JSON.stringify(member, null, 2);
-  alert("Profile updated! Copy the JSON from the box below and paste it into data.js to save permanently.");
-});
-
-/* Add a brand-new member to the directory */
-document.getElementById("btnAddMember").addEventListener("click", function () {
-  const newId = groupMembers.length
-    ? Math.max.apply(null, groupMembers.map(function (m) { return m.id; })) + 1
-    : 1;
-  const newMember = {
-    id: newId,
-    name: "New Member",
-    role: "Computer Science Student",
-    year: "300 Level",
-    photo: newId.toString().slice(0, 2).toUpperCase(),
-    bio: "",
-    skills: [],
-    projects: [],
-    email: "",
-    github: ""
-  };
-  groupMembers.push(newMember);
-  renderMembers();
-  memberSelect.value = groupMembers.length - 1;
-  populateEditForm();
-  previewMember();
-});
-
-memberSelect.addEventListener("change", function () {
-  populateEditForm();
-});
-
-/* Populate the select on load */
-populateEditForm();
-
-/* ============================================================
-   CONTACT FORM — validation + dynamic success message
-   ============================================================ */
-const contactForm = document.getElementById("contactForm");
-
-function validateField(input, errorEl) {
-  const value = input.value.trim();
-  let valid = true;
-
-  if (input.name === "name") { valid = value.length >= 2; }
-  if (input.name === "email") { valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
-  if (input.name === "message") { valid = value.length >= 10; }
-
-  if (valid) {
-    input.classList.remove("invalid");
-    if (errorEl) errorEl.classList.remove("show");
-    return true;
+  if (member.skills.length) {
+    appendText(card, "h4", "Skills");
+    appendText(card, "p", member.skills.join(", "));
   }
 
-  input.classList.add("invalid");
-  if (errorEl) {
-    errorEl.textContent = input.name === "name" ? "Please enter your full name (at least 2 characters)."
+  if (member.projects.length) {
+    appendText(card, "h4", "Projects");
+    const projects = document.createElement("ul");
+    member.projects.forEach(function (project) {
+      appendText(projects, "li", project.description
+        ? project.title + " — " + project.description
+        : project.title);
+    });
+    card.appendChild(projects);
+  }
+
+  const contact = document.createElement("p");
+  if (member.email) {
+    const email = document.createElement("a");
+    email.href = "mailto:" + member.email;
+    email.textContent = "Email";
+    contact.appendChild(email);
+  }
+  if (member.github) {
+    if (contact.childNodes.length) contact.append(" | ");
+    const github = document.createElement("a");
+    github.href = member.github;
+    github.target = "_blank";
+    github.rel = "noopener";
+    github.textContent = "GitHub";
+    contact.appendChild(github);
+  }
+  if (contact.childNodes.length) card.appendChild(contact);
+  return card;
+}
+
+const membersGrid = document.getElementById("membersGrid");
+if (membersGrid && typeof groupMembers !== "undefined") {
+  groupMembers.forEach(function (member) {
+    membersGrid.appendChild(createMemberCard(member));
+  });
+}
+
+const memberSelect = document.getElementById("memberSelect");
+if (memberSelect && typeof groupMembers !== "undefined") {
+  const fields = {
+    name: document.getElementById("memberName"),
+    role: document.getElementById("memberRole"),
+    year: document.getElementById("memberYear"),
+    bio: document.getElementById("memberBio"),
+    skills: document.getElementById("memberSkills"),
+    projects: document.getElementById("memberProjects"),
+    email: document.getElementById("memberEmail"),
+    github: document.getElementById("memberGithub")
+  };
+  const previewCard = document.getElementById("editPreviewCard");
+  const savedCode = document.getElementById("editSavedCode");
+
+  function populateForm() {
+    const member = groupMembers[Number(memberSelect.value)];
+    if (!member) return;
+    fields.name.value = member.name;
+    fields.role.value = member.role;
+    fields.year.value = member.year || "";
+    fields.bio.value = member.bio;
+    fields.skills.value = member.skills.join(", ");
+    fields.projects.value = member.projects.map(function (project) {
+      return project.title + " — " + project.description;
+    }).join("\n");
+    fields.email.value = member.email;
+    fields.github.value = member.github;
+  }
+
+  function readForm() {
+    const current = groupMembers[Number(memberSelect.value)];
+    const name = fields.name.value.trim();
+    const projects = fields.projects.value.split("\n").map(function (line) {
+      const separator = line.indexOf("—");
+      return {
+        title: (separator === -1 ? line : line.slice(0, separator)).trim(),
+        description: separator === -1 ? "" : line.slice(separator + 1).trim()
+      };
+    }).filter(function (project) {
+      return project.title;
+    });
+
+    return {
+      id: current.id,
+      name: name,
+      role: fields.role.value.trim(),
+      year: fields.year.value.trim() || "300 Level",
+      photo: name.split(/\s+/).map(function (part) { return part[0] || ""; }).join("").slice(0, 2).toUpperCase(),
+      bio: fields.bio.value.trim(),
+      skills: fields.skills.value.split(",").map(function (skill) { return skill.trim(); }).filter(Boolean),
+      projects: projects,
+      email: fields.email.value.trim(),
+      github: fields.github.value.trim()
+    };
+  }
+
+  function showPreview(member) {
+    previewCard.replaceChildren(createMemberCard(member || readForm()));
+  }
+
+  groupMembers.forEach(function (member, index) {
+    const option = document.createElement("option");
+    option.value = index;
+    option.textContent = member.name;
+    memberSelect.appendChild(option);
+  });
+
+  memberSelect.addEventListener("change", function () {
+    populateForm();
+    showPreview();
+    savedCode.textContent = "";
+  });
+  document.getElementById("btnPreview").addEventListener("click", function () {
+    showPreview();
+  });
+  document.getElementById("btnSave").addEventListener("click", function () {
+    if (!fields.name.value.trim()) {
+      fields.name.focus();
+      return;
+    }
+    const index = Number(memberSelect.value);
+    const member = readForm();
+    groupMembers[index] = member;
+    showPreview(member);
+    savedCode.textContent = JSON.stringify(member, null, 2);
+  });
+  document.getElementById("btnAddMember").addEventListener("click", function () {
+    const newId = groupMembers.reduce(function (highest, member) {
+      return Math.max(highest, member.id);
+    }, 0) + 1;
+    const member = {
+      id: newId,
+      name: "New Member",
+      role: "Computer Science Student",
+      year: "300 Level",
+      photo: "NM",
+      bio: "",
+      skills: [],
+      projects: [],
+      email: "",
+      github: ""
+    };
+    groupMembers.push(member);
+    const option = document.createElement("option");
+    option.value = groupMembers.length - 1;
+    option.textContent = member.name;
+    memberSelect.appendChild(option);
+    memberSelect.value = option.value;
+    populateForm();
+    showPreview(member);
+    savedCode.textContent = "";
+  });
+
+  populateForm();
+  showPreview();
+}
+
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  function validateField(input, errorElement) {
+    const value = input.value.trim();
+    const valid = input.name === "name" ? value.length >= 2
+      : input.name === "email" ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+      : value.length >= 10;
+
+    input.classList.toggle("invalid", !valid);
+    errorElement.textContent = valid ? "" : input.name === "name"
+      ? "Please enter your full name (at least 2 characters)."
       : input.name === "email" ? "Please enter a valid email address."
       : "Please enter a message (at least 10 characters).";
-    errorEl.classList.add("show");
+    return valid;
   }
-  return false;
-}
 
-contactForm.addEventListener("submit", function (e) {
-  e.preventDefault();
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const fields = [
+      [contactForm.elements.name, document.getElementById("cNameError")],
+      [contactForm.elements.email, document.getElementById("cEmailError")],
+      [contactForm.elements.message, document.getElementById("cMessageError")]
+    ];
+    let firstInvalid;
+    fields.forEach(function (field) {
+      if (!validateField(field[0], field[1]) && !firstInvalid) firstInvalid = field[0];
+    });
+    if (firstInvalid) {
+      firstInvalid.focus();
+      return;
+    }
 
-  const fields = [
-    { input: contactForm.elements.name, error: document.getElementById("cNameError") },
-    { input: contactForm.elements.email, error: document.getElementById("cEmailError") },
-    { input: contactForm.elements.message, error: document.getElementById("cMessageError") }
-  ];
-
-  let firstInvalid = null;
-  fields.forEach(function (f) {
-    if (!validateField(f.input, f.error)) { if (!firstInvalid) firstInvalid = f.input; }
+    let status = contactForm.querySelector("[role='status']");
+    if (!status) {
+      status = document.createElement("p");
+      status.setAttribute("role", "status");
+      contactForm.appendChild(status);
+    }
+    status.textContent = "Your details look good. This demonstration form does not send email.";
   });
 
-  if (firstInvalid) { firstInvalid.focus(); return; }
-
-  /* VALIDATION PASSED — create success message dynamically */
-  const name = contactForm.elements.name.value.trim();
-  const successEl = document.createElement("div");
-  successEl.className = "form-success";
-  successEl.classList.add("show");
-  successEl.setAttribute("role", "status");
-  successEl.textContent = "Thank you, " + name + "! Your message has been sent successfully. We will get back to you soon.";
-  contactForm.appendChild(successEl);
-
-  contactForm.reset();
-});
-
-/* Clear errors as user types */
-contactForm.addEventListener("input", function (e) {
-  const field = e.target;
-  if (field.name) {
-    field.classList.remove("invalid");
-    const errorEl = field.parentElement.querySelector(".error-message");
-    if (errorEl) errorEl.classList.remove("show");
-  }
-});
-
-/* Footer year */
-document.getElementById("year").textContent = new Date().getFullYear();
+  contactForm.addEventListener("input", function (event) {
+    const input = event.target;
+    if (!input.name) return;
+    input.classList.remove("invalid");
+    const error = input.parentElement.querySelector(".error-message");
+    if (error) error.textContent = "";
+  });
+}

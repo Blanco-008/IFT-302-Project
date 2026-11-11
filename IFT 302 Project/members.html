@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+       IFT 302 GROUP 1 — All Members Page
+       Nile University of Nigeria
+       
+       Shows every student profile from the `groupMembers` array
+       in data.js. Cards are rendered dynamically by script.js.
+      -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="All IFT 302 Group 1 member profiles — Nile University of Nigeria." />
+  <title>IFT 302 Group 1 | All Members</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- NAVIGATION -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <img src="nile-logo.png" alt="Nile University logo" class="logo" />
+        <span class="brand-name">Nile University</span>
+      </a>
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="members.html" aria-current="page">All Members</a></li>
+          <li><a href="edit.html">Edit Profile</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- MEMBERS DIRECTORY -->
+    <section class="section" id="members">
+      <div class="container">
+        <h2 class="section-title"> <span>Portfolio</span></h2>
+
+        <!-- Cards are injected here dynamically by script.js -->
+        <div class="members-grid" id="membersGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>IFT 302 / Group 1</h3>
+        <p>Online student portfolio of IFT 302 Group 1 at Nile University of Nigeria. Built with pure HTML, CSS and JavaScript.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="members.html">All Members</a></li>
+          <li><a href="edit.html">Edit Profile</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>GitHub</h4>
+        <ul>
+          <li><a href="https://github.com/Blanco-008/IFT-302-Project" target="_blank" rel="noopener">Group GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year">2026</span> IFT 302 Group 1 — Nile University of Nigeria. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
