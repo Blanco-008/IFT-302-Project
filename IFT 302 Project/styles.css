@@ -1,16 +1,26 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --dark-blue: #071a33;
+  --dark-blue-strong: #0d2344;
+  --blue-accent: #8ab4ff;
+  --surface: #101010;
+  --panel-border: rgba(255, 255, 255, 0.18);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #ffffff;
-  color: #222;
+  background: var(--black);
+  color: var(--white);
   font: 16px/1.5 Arial, Helvetica, sans-serif;
 }
 
 a {
-  color: #0645ad;
+  color: var(--blue-accent);
 }
 
 .skip-link {
@@ -18,7 +28,8 @@ a {
   left: -10000px;
   top: 0;
   padding: 8px;
-  background: #fff;
+  background: var(--white);
+  color: var(--black);
 }
 
 .skip-link:focus {
@@ -32,8 +43,8 @@ a {
 }
 
 .site-header {
-  background: #0b3d91;
-  border-bottom: 1px solid #090000ef;
+  background: var(--dark-blue);
+  border-bottom: 1px solid var(--panel-border);
 }
 
 .nav-container {
@@ -48,7 +59,7 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #ffffff;
+  color: var(--white);
   font-weight: bold;
   text-decoration: none;
 }
@@ -61,7 +72,7 @@ a {
 .logo{
   height: 40px;
   width: auto;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--white);
 }
 
 .nav-menu ul {
@@ -74,7 +85,12 @@ a {
 }
 
 .nav-menu a {
-  color: #ffffff;
+  color: var(--white);
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus {
+  color: var(--blue-accent);
 }
 
 .nav-menu a[aria-current="page"] {
@@ -83,6 +99,7 @@ a {
 
 main {
   min-height: calc(100vh - 112px);
+  background: var(--black);
 }
 
 .section {
@@ -91,12 +108,13 @@ main {
 
 .section-title {
   margin: 0;
-  color: #222;
+  color: var(--white);
   font-size: 2rem;
 }
 
 .section-sub {
   margin: 8px 0 24px;
+  color: var(--white);
 }
 
 .hero {
@@ -109,13 +127,14 @@ main {
 
 .hero-badge {
   display: block;
+  color: var(--blue-accent);
 }
 
 .hero h1 {
   margin: 12px 0 0;
   font-size: 2.25rem;
+  color: var(--white);
 }
-
 
 .hero-actions,
 .edit-actions {
@@ -128,10 +147,17 @@ main {
 .btn {
   display: inline-block;
   padding: 7px 12px;
-  border: 1px solid #777;
-  background: #f5f5f5;
-  color: #0645ad;
+  border: 1px solid var(--white);
+  background: var(--dark-blue);
+  color: var(--white);
   text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--blue-accent);
+  border-color: var(--blue-accent);
+  color: var(--black);
 }
 
 .members-grid {
@@ -143,26 +169,30 @@ main {
 
 .member-card {
   padding: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--panel-border);
+  background: var(--surface);
 }
 
 .member-card h3 {
   margin: 0 0 4px;
+  color: var(--white);
 }
 
 .member-card h4 {
   margin: 12px 0 4px;
+  color: var(--white);
 }
 
 .member-meta {
-  color: #555;
+  color: #dfe9ff;
 }
 
 .edit-panel,
 .contact-info,
 .contact-form {
   padding: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--panel-border);
+  background: var(--surface);
 }
 
 .edit-grid {
@@ -184,6 +214,7 @@ main {
   display: block;
   margin-bottom: 4px;
   font-weight: bold;
+  color: var(--white);
 }
 
 .form-group input,
@@ -193,9 +224,10 @@ main {
 .edit-panel textarea {
   width: 100%;
   padding: 8px;
-  border: 1px solid #888;
+  border: 1px solid var(--white);
   border-radius: 0;
-  color: inherit;
+  background: var(--black);
+  color: var(--white);
   font: inherit;
 }
 
@@ -207,27 +239,31 @@ main {
 
 button {
   padding: 8px 12px;
-  border: 1px solid #777;
+  border: 1px solid var(--white);
   border-radius: 0;
-  background: #f5f5f5;
-  color: #222;
+  background: var(--dark-blue-strong);
+  color: var(--white);
   font: inherit;
   cursor: pointer;
 }
 
-button:hover {
-  background: #e5e5e5;
+button:hover,
+button:focus {
+  background: var(--blue-accent);
+  color: var(--black);
+  border-color: var(--blue-accent);
 }
 
 .edit-preview {
   margin-top: 28px;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--panel-border);
   padding-top: 12px;
 }
 
 .edit-preview pre {
   overflow: auto;
   white-space: pre-wrap;
+  color: var(--white);
 }
 
 .contact-grid {
@@ -242,15 +278,16 @@ button:hover {
 
 .error-message {
   display: block;
-  color: #b00020;
+  color: #ff8a8a;
 }
 
 .invalid {
-  border-color: #b00020 !important;
+  border-color: #ff8a8a !important;
 }
 
 .site-footer {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--panel-border);
+  background: var(--dark-blue);
   padding: 8px 0;
 }
 
@@ -266,6 +303,7 @@ button:hover {
 .footer-grid h4,
 .footer-grid p {
   margin: 0 0 8px;
+  color: var(--white);
 }
 
 .footer-grid ul {
@@ -273,13 +311,18 @@ button:hover {
   padding-left: 20px;
 }
 
+.footer-grid a {
+  color: var(--white);
+}
+
 .footer-bottom {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--panel-border);
   padding: 8px 0;
 }
 
 .footer-bottom p {
   margin: 0;
+  color: var(--white);
 }
 
 @media (max-width: 700px) {
